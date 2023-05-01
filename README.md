@@ -5,11 +5,8 @@
 ### Set global config
 
 ```pwsh
-$myRG="rg-az204-djoh-certificate"
-```
-
-```pwsh
-$myLocation="westeurope"
+az configure --defaults group=rg-name
+az configure --defaults location=westeurope
 ```
 
 ### List & remove resources in a resource group
@@ -31,27 +28,27 @@ az resource delete --resource-group $myRG --ids $resources[<resourceIndex>].id -
 ### Manage container images in Azure Container Registry
 
 ```pwsh
-az acr create --resource-group $myRG --name "acrdjoh" --sku "Basic"
+az acr create --resource-group $myRG --name "acrname" --sku "Basic"
 ```
 
 ```pwsh
-az acr build --image "sample/hello-world:v1" --registry "acrdjoh" --file "Dockerfile" .
+az acr build --image "sample/hello-world:v1" --registry "acrname" --file "Dockerfile" .
 ```
 
 ```pwsh
-az acr repository list --name "acrdjoh" --output "table"
+az acr repository list --name "acrname" --output "table"
 ```
 
 ```pwsh
-az acr repository show-tags --name "acrdjoh" --repository "sample/hello-world" --output "table"
+az acr repository show-tags --name "acrname" --repository "sample/hello-world" --output "table"
 ```
 
 ```pwsh
-az acr run --registry "acrdjoh" --cmd "$Registry/sample/hello-world:v1" "/dev/null"
+az acr run --registry "acrname" --cmd "$Registry/sample/hello-world:v1" "/dev/null"
 ```
 
 ```pwsh
-az acr delete --resource-group $myRG --name "acrdjoh"
+az acr delete --resource-group $myRG --name "acrname"
 ```
 
 ### Run container images in Azure Container Instances
